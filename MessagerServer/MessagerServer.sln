@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagerServer", "MessagerServer.csproj", "{F93EDD38-BF4F-4C64-B957-13A4B66A5558}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageClient", "..\MessageClient\MessageClient.csproj", "{B9F53801-EAAF-417D-8750-14146CA0FF47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F93EDD38-BF4F-4C64-B957-13A4B66A5558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93EDD38-BF4F-4C64-B957-13A4B66A5558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93EDD38-BF4F-4C64-B957-13A4B66A5558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93EDD38-BF4F-4C64-B957-13A4B66A5558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F53801-EAAF-417D-8750-14146CA0FF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F53801-EAAF-417D-8750-14146CA0FF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F53801-EAAF-417D-8750-14146CA0FF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F53801-EAAF-417D-8750-14146CA0FF47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D243F9CF-91D5-4CCC-A5EE-5F976C2F7BC9}
+	EndGlobalSection
+EndGlobal
