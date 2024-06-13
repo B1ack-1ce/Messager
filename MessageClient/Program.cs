@@ -4,7 +4,19 @@
     {
         static async Task Main(string[] args)
         {
-            await new MessagerClient().ClientStart();
+            try
+            {
+                MessagerClient messagerServer = new MessagerClient();
+
+                await messagerServer.ClientStartAsync();
+
+                Console.WriteLine("Завершение работы клиента...");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.ReadKey();
         }
     }
 }

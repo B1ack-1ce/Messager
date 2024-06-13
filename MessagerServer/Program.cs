@@ -6,21 +6,18 @@ namespace MessagerServer
     {
         static void Main(string[] args)
         {
-			try
-			{
+            try
+            {
                 MessagerServer messagerServer = new MessagerServer();
+
                 var serverTask = Task.Run(messagerServer.StartServerAsync);
 
-                while (!serverTask.IsCanceled)
-                {
-                    //ToDo
-
-                }
+                serverTask.Wait();
 
                 Console.WriteLine("Завершение работы сервера...");
             }
-			catch (Exception ex)
-			{
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
             Console.ReadKey();
