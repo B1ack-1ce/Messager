@@ -6,9 +6,9 @@
         {
             try
             {
-                MessagerClient messagerServer = new MessagerClient();
+                MessagerClient messagerClient = new MessagerClient();
 
-                await messagerServer.ClientStartAsync();
+                await messagerClient.ClientStartAsync();
 
                 Console.WriteLine("Завершение работы клиента...");
             }

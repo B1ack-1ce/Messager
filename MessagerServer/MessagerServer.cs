@@ -15,17 +15,38 @@ namespace MessagerServer
         /// </summary>
         private readonly Dictionary<TcpClient, Guid> _clients = new Dictionary<TcpClient, Guid>();
 
+
         /// <summary>
-        /// Начало работы сервера
+        /// Начало работы сервера с ожиданием запроса на завершение работы сервера
         /// </summary>
         /// <returns>Возвращает задачу (Task)</returns>
-        public async Task StartServerAsync()
+        public async Task StartServerAsync(CancellationToken token)
         {
+            var waitNewClient = WaitNewClient();
+
             while (true)
             {
-                var localEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 1234);
-                using var listener = new TcpListener(localEndPoint);
-                listener.Start(100);
+                if (token.IsCancellationRequested)
+                {
+                    await Console.Out.WriteLineAsync("Запрос на завершение приложения...");
+                    return;
+                }
+                await Task.Delay(300);
+            }
+        }
+
+        /// <summary>
+        /// Ожидание нового подключения (клиента)
+        /// </summary>
+        /// <returns>Возвращает задачу</returns>
+        private async Task WaitNewClient()
+        {
+            var localEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 1234);
+            using var listener = new TcpListener(localEndPoint);
+            listener.Start(100);
+            while (true)
+            {
+
 
                 await Console.Out.WriteLineAsync("Waiting...");
                 var socket = await listener.AcceptTcpClientAsync();
@@ -34,7 +55,8 @@ namespace MessagerServer
                 {
                     await Console.Out.WriteLineAsync($"Подключен новый пользователь: {socket.Client.RemoteEndPoint}");
 
-                    Task.Run(() => ReceiveUserMessage(socket));
+                    Task t1 = Task.Run(() => ReceiveUserMessage(socket));
+                    // Sending task
                 }
             }
         }
@@ -51,43 +73,38 @@ namespace MessagerServer
                 string content = string.Empty;
                 UserMessage receiveMessage;
 
-                using (var stream = client.GetStream())
+                using (var stream = new StreamReader(client.GetStream()))
                 {
                     while (true)
                     {
-                        byte[] buffer = new byte[2048];
-                        await stream.Socket.ReceiveAsync(buffer);
+                        content = await stream.ReadLineAsync();
 
-                        content = Encoding.UTF8.GetString(buffer);
-                        receiveMessage = JsonConvert.DeserializeObject<UserMessage>(content);
-
-                        // Вывод всей информации из сообщения
-                        if (receiveMessage != null)
+                        if (content != null && content.ToLower().Equals("exit"))
                         {
-                            await Console.Out.WriteLineAsync($"\nПолучено сообщение на сервер:");
-                            await Console.Out.WriteLineAsync($"Время получения: {receiveMessage.DateTime.ToShortTimeString()}");
-                            await Console.Out.WriteLineAsync($"От {receiveMessage.Username}");
-                            await Console.Out.WriteLineAsync($"Guid {receiveMessage.ClientId}");
-                            await Console.Out.WriteLineAsync($"Контент: {receiveMessage.Content}");
+                            throw new SocketException(0, "Клиент разорвал подключение.");
+
+                        }
+                        else if (content != null)
+                        {
+                            receiveMessage = JsonConvert.DeserializeObject<UserMessage>(content);
+
+                            // Вывод всей информации из сообщения
+                            if (receiveMessage != null)
+                            {
+                                await Console.Out.WriteLineAsync($"\nПолучено сообщение на сервер:");
+                                await Console.Out.WriteLineAsync($"Время получения: {receiveMessage.DateTime.ToShortTimeString()}");
+                                await Console.Out.WriteLineAsync($"От {receiveMessage.Username}");
+                                await Console.Out.WriteLineAsync($"Guid {receiveMessage.ClientId}");
+                                await Console.Out.WriteLineAsync($"Контент: {receiveMessage.Content}");
+                            }
                         }
                         else
                         {
-                            throw new SocketException(0, "Клиент разорвал подключение.");
+                            await Console.Out.WriteLineAsync("Какая то ошибка...");
                         }
-                        // Временное решение уведомления клиента, от которого пришло сообщение. Написано грязно
-                        await stream.Socket
-                            .SendAsync(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject
-                            (
-                                new RecieveMessage 
-                                { 
-                                    DateTime = DateTime.Now,
-                                    UsernameFrom = "Server",
-                                    Content = "Сообщение получено на сервер."
-                                }
-                                )));
                     }
                 }
-                
+
             }
             catch (SocketException ex)
             {
