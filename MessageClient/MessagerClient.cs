@@ -97,7 +97,7 @@ namespace MessageClient
         }
 
         /// <summary>
-        /// 
+        /// Отправление сообщений на сервер
         /// </summary>
         /// <returns></returns>
         private async Task SendingMessageAsync()
@@ -123,28 +123,30 @@ namespace MessageClient
 
             try
             {
-                while (true)
+                using (var writer = new StreamWriter(_client.GetStream()))
                 {
-                    var stream = _client.GetStream();
-                    await Console.Out.WriteLineAsync("Введите сообщение: ");
-                    sendingMessage.Content = Console.ReadLine();
-                    sendingMessage.DateTime = DateTime.Now;
-
-                    if (sendingMessage.Content == string.Empty || sendingMessage.Content == null)
+                    while (true)
                     {
-                        await Console.Out.WriteLineAsync("Введена пустая строка");
-                        continue;
-                    }
-                    else if (sendingMessage.Content.ToLower().Equals("quit"))
-                    {
-                        return;
-                    }
+                        await Console.Out.WriteLineAsync("Введите сообщение: ");
+                        sendingMessage.Content = Console.ReadLine();
+                        sendingMessage.DateTime = DateTime.Now;
 
-                    var content = JsonConvert.SerializeObject(sendingMessage);
-                    byte[] buffer = Encoding.UTF8.GetBytes(content);
+                        if (sendingMessage.Content == string.Empty || sendingMessage.Content == null)
+                        {
+                            await Console.Out.WriteLineAsync("Введена пустая строка");
+                            continue;
+                        }
+                        else if (sendingMessage.Content.ToLower().Equals("exit"))
+                        {
+                            await writer.WriteLineAsync("exit");
+                            return;
+                        }
 
-                    //stream.Flush();
-                    await stream.Socket.SendAsync(buffer);
+                        var content = JsonConvert.SerializeObject(sendingMessage);
+
+                        await writer.WriteLineAsync(content);
+                        writer.Flush();
+                    }
                 }
             }
             catch (Exception ex)
