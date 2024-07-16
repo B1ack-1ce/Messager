@@ -1,28 +1,30 @@
 ﻿
 
-namespace MessagerServer
+using Messenger.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Messenger
 {
-    internal class Program
+    public class Program
     {
         private static CancellationTokenSource _cts = new CancellationTokenSource();
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
                 MessagerServer messagerServer = new MessagerServer();
-
-                var serverTask = Task.Run(() => messagerServer.StartServerAsync(_cts.Token));
+                var serverTask = messagerServer.StartServerAsync(_cts.Token);
 
                 Shutdown();
-
-                serverTask.Wait();
-
                 Console.WriteLine("Завершение приложения!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Ошибка в методе Main");
             }
             Console.ReadKey();
         }
