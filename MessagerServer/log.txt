@@ -1,0 +1,226 @@
+dbug: 11.07.2024 17:32:09.232 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 8.0.6 initialized 'ClientsContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:8.0.6' with options: None
+
+dbug: 11.07.2024 17:32:10.489 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ClientsContext' disposed.
+
+dbug: 11.07.2024 17:32:42.223 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 8.0.6 initialized 'ClientsContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:8.0.6' with options: None
+
+dbug: 11.07.2024 17:32:42.240 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+
+dbug: 11.07.2024 17:32:42.254 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (12ms).
+
+dbug: 11.07.2024 17:32:42.256 RelationalEventId.MigrateUsingConnection[20400] (Microsoft.EntityFrameworkCore.Migrations) 
+      Migrating using database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.259 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+
+dbug: 11.07.2024 17:32:42.260 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (1ms).
+
+dbug: 11.07.2024 17:32:42.262 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.276 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.281 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.284 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+
+dbug: 11.07.2024 17:32:42.292 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+
+dbug: 11.07.2024 17:32:42.296 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (4ms).
+
+dbug: 11.07.2024 17:32:42.297 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (8ms).
+
+dbug: 11.07.2024 17:32:42.297 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.299 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.304 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+
+info: 11.07.2024 17:32:42.319 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+
+dbug: 11.07.2024 17:32:42.321 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.322 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (1ms).
+
+dbug: 11.07.2024 17:32:42.323 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+
+dbug: 11.07.2024 17:32:42.323 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (0ms).
+
+dbug: 11.07.2024 17:32:42.323 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+
+dbug: 11.07.2024 17:32:42.324 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+
+dbug: 11.07.2024 17:32:42.325 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.325 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.325 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+
+info: 11.07.2024 17:32:42.325 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+
+dbug: 11.07.2024 17:32:42.326 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.326 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+
+dbug: 11.07.2024 17:32:42.338 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.339 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.339 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+
+dbug: 11.07.2024 17:32:42.339 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+
+dbug: 11.07.2024 17:32:42.339 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+
+dbug: 11.07.2024 17:32:42.340 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+
+info: 11.07.2024 17:32:42.340 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";
+
+dbug: 11.07.2024 17:32:42.342 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.343 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' is being disposed after spending 2ms reading results.
+
+dbug: 11.07.2024 17:32:42.343 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.344 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+
+info: 11.07.2024 17:32:42.355 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20240711143210_UpdateClientModel'.
+
+dbug: 11.07.2024 17:32:42.372 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.372 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.374 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Beginning transaction with isolation level 'Unspecified'.
+
+dbug: 11.07.2024 17:32:42.376 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Began transaction with isolation level 'Serializable'.
+
+dbug: 11.07.2024 17:32:42.377 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+
+dbug: 11.07.2024 17:32:42.377 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+
+dbug: 11.07.2024 17:32:42.378 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+
+dbug: 11.07.2024 17:32:42.378 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE "Clients" ADD "Password" TEXT NOT NULL DEFAULT '';
+
+info: 11.07.2024 17:32:42.379 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE "Clients" ADD "Password" TEXT NOT NULL DEFAULT '';
+
+dbug: 11.07.2024 17:32:42.379 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+
+dbug: 11.07.2024 17:32:42.379 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+
+dbug: 11.07.2024 17:32:42.379 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+
+dbug: 11.07.2024 17:32:42.379 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20240711143210_UpdateClientModel', '8.0.6');
+
+info: 11.07.2024 17:32:42.380 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20240711143210_UpdateClientModel', '8.0.6');
+
+dbug: 11.07.2024 17:32:42.381 RelationalEventId.TransactionCommitting[20210] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committing transaction.
+
+dbug: 11.07.2024 17:32:42.385 RelationalEventId.TransactionCommitted[20202] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committed transaction.
+
+dbug: 11.07.2024 17:32:42.386 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Disposing transaction.
+
+dbug: 11.07.2024 17:32:42.386 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.387 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+
+dbug: 11.07.2024 17:32:42.388 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ClientsContext' disposed.
+
+dbug: 11.07.2024 17:32:42.388 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db'.
+
+dbug: 11.07.2024 17:32:42.388 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'main' on server 'E:\Учеба Digital-master\Messager\MessagerServer\clients.db' (0ms).
+

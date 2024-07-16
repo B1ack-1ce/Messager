@@ -10,11 +10,17 @@ namespace MessageClient
     public class MessagerClient
     {
         private TcpClient _client;
+        private  StreamReader _reader;
+        private  StreamWriter _writer;
+        
+        private object _locker = new object();
+        private readonly UserInformation _userInformation;
         private int _countOfConnections = 0;
 
         public MessagerClient()
         {
             _client = new TcpClient();
+            _userInformation = new UserInformation();
         }
 
         /// <summary>
@@ -32,11 +38,13 @@ namespace MessageClient
                         await ConnectionToServerAsync();
                     }
 
-                    var sendingTask = Task.Run(SendingMessageAsync);
-                    var recieveTask = Task.Run(RecieveMessageAsync);
+                    var sendTask = SendingMessageAsync();
+                    var recieveTask = RecieveMessageAsync();
 
                     await Console.Out.WriteLineAsync("Ожидаем завершение одной из задач...");
-                    sendingTask.Wait();
+
+                    Task.WaitAll(sendTask, recieveTask);
+
                     _client.Close();
                     await Console.Out.WriteLineAsync("Завершение приложения...");
                     await Task.Delay(3000);
@@ -83,6 +91,11 @@ namespace MessageClient
                         {
                             await Console.Out.WriteLineAsync("\nУспешное переподключение к серверу.");
                         }
+
+                        _reader = new StreamReader(_client.GetStream());
+                        _writer = new StreamWriter(_client.GetStream());
+                        _writer.AutoFlush = true;
+
                         _countOfConnections++;
                         return;
                     }
@@ -102,56 +115,23 @@ namespace MessageClient
         /// <returns></returns>
         private async Task SendingMessageAsync()
         {
-            var sendingMessage = new SendMessage
-            {
-                ClientId = Guid.NewGuid(),
-                DateTime = DateTime.Now
-            };
-
-            //Здесь можно прописать логику проверки никнейма или вынести все в отдельный метод
+            await Task.Delay(10);
             while (true)
             {
-                await Console.Out.WriteLineAsync("Введите свое имя: ");
-                var nickname = Console.ReadLine();
-
-                if (nickname != null)
+                var content = Console.ReadLine();
+                
+                if (content is not null && !content.Equals(string.Empty))
                 {
-                    sendingMessage.Username = nickname;
-                    break;
-                }
-            }
-
-            try
-            {
-                using (var writer = new StreamWriter(_client.GetStream()))
-                {
-                    while (true)
+                    var message = new Message
                     {
-                        await Console.Out.WriteLineAsync("Введите сообщение: ");
-                        sendingMessage.Content = Console.ReadLine();
-                        sendingMessage.DateTime = DateTime.Now;
+                        Username = _userInformation.UserName,
+                        DateTime = DateTime.Now,
+                        Content = content
+                    };
 
-                        if (sendingMessage.Content == string.Empty || sendingMessage.Content == null)
-                        {
-                            await Console.Out.WriteLineAsync("Введена пустая строка");
-                            continue;
-                        }
-                        else if (sendingMessage.Content.ToLower().Equals("exit"))
-                        {
-                            await writer.WriteLineAsync("exit");
-                            return;
-                        }
-
-                        var content = JsonConvert.SerializeObject(sendingMessage);
-
-                        await writer.WriteLineAsync(content);
-                        writer.Flush();
-                    }
+                    var contentString = JsonConvert.SerializeObject(message);
+                    await _writer.WriteLineAsync(contentString);
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ошибка в SendingMessageAsync()", ex);
             }
         }
 
@@ -163,17 +143,31 @@ namespace MessageClient
         {
             while (true)
             {
-                var stream = _client.GetStream();
-                byte[] buffer = new byte[2048];
-                await stream.Socket.ReceiveAsync(buffer);
+                var content = await _reader.ReadLineAsync();
+                if (content is not null)
+                {
+                    var message = JsonConvert.DeserializeObject<Message>(content);
 
-                var content = Encoding.UTF8.GetString(buffer);
-                var recieveMessage = JsonConvert.DeserializeObject<RecieveMessage>(content);
+                    if (message is not null && message.Content is not null)
+                    {
+                        lock (_locker)
+                        {
+                            Console.WriteLine($"\nСообщение пришло от: {message.Username}");
+                            Console.WriteLine($"Дата {message.DateTime.ToShortTimeString()}");
+                            Console.WriteLine($"Контент: {message.Content}");
+                        }
+                    }
+                    else
+                    {
+                        var userInfo = JsonConvert.DeserializeObject<UserInformation>(content);
 
-                await Console.Out.WriteLineAsync($"\nПолучено сообщение:");
-                await Console.Out.WriteLineAsync($"От: {recieveMessage.UsernameFrom}");
-                await Console.Out.WriteLineAsync($"Content: {recieveMessage.Content}");
-
+                        if (userInfo is not null)
+                        {
+                            _userInformation.UserName = userInfo.UserName;
+                            _userInformation.Email = userInfo.Email;
+                        }
+                    }
+                }
             }
         }
     }
